@@ -20,7 +20,7 @@ logo = """
 ░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░░░░╚═╝░░░  ░╚═════╝░╚══════╝╚═╝░░╚══╝"""
 
 def printLogo():
-        print(Center.XCenter(Colorate.Vertical(Colors.green_to_cyan, logo, 1)))
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, logo, 1)))
 
 clear()
 def gen():
@@ -74,7 +74,7 @@ logo2 = """
 ░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░░░░╚═╝░░░  ░╚════╝░╚═╝░░╚═╝╚══════╝░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝\n\n"""
 
 def printLogo2():
-    print(Center.XCenter(Colorate.Vertical(Colors.green_to_cyan, logo2, 1)))
+    print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, logo2, 1)))
 
 def check():
     global count2, free, taken
