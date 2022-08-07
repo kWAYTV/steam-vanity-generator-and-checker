@@ -8,7 +8,19 @@ import os, time
 global count
 count = 0 # Don't touch this
 clear = lambda: os.system("cls" if os.name in ("nt", "dos") else "clear") # Don't touch this
-mode = "og" # og = both modes / check = check only mode / gen = generate only mode
+mode = "" # This is selected on the tool, don't touch.
+
+
+mainLogo = """
+██╗░░░██╗░█████╗░███╗░░██╗██╗████████╗██╗░░░██╗  ████████╗░█████╗░░█████╗░██╗░░░░░
+██║░░░██║██╔══██╗████╗░██║██║╚══██╔══╝╚██╗░██╔╝  ╚══██╔══╝██╔══██╗██╔══██╗██║░░░░░
+╚██╗░██╔╝███████║██╔██╗██║██║░░░██║░░░░╚████╔╝░  ░░░██║░░░██║░░██║██║░░██║██║░░░░░
+░╚████╔╝░██╔══██║██║╚████║██║░░░██║░░░░░╚██╔╝░░  ░░░██║░░░██║░░██║██║░░██║██║░░░░░
+░░╚██╔╝░░██║░░██║██║░╚███║██║░░░██║░░░░░░██║░░░  ░░░██║░░░╚█████╔╝╚█████╔╝███████╗
+░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝░░░╚═╝░░░░░░╚═╝░░░  ░░░╚═╝░░░░╚════╝░░╚════╝░╚══════╝"""
+
+def printMain():
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_blue, mainLogo, 1)))
 
 
 logo = """
@@ -46,11 +58,10 @@ def gen():
             remaining = amount - count
             t1 = time.time() - t0
             os.system(f"title Steam Vanity Generator - Generated: {count} - Remaining: {remaining} - Elapsed: {round(t1)} seconds")
-
+    
     end = time.time()
     elapsed = end - start
     os.system(f"title Steam Vanity Generator - Done! - Generated {count} usernames" + f" - Elapsed: {round(elapsed)} seconds")
-    print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Generated {count} usernames", 1)))
 
 time.sleep(2)
 clear()
@@ -60,7 +71,7 @@ from colorama import Fore, Back, Style
 from colorama import init
 global count2, free, taken
 
-apiKey= "" # Enter your Steam API Key here
+apiKey="862CE33052E5105E35F08B9E22A564CF" # Enter your Steam API Key here
 count2 = 0 # Don't touch this
 free = 0 # Don't touch this
 taken = 0 # Don't touch this
@@ -120,38 +131,82 @@ def check():
             t4 = time.time() - t3
             os.system(f"title Steam Vanity Checker - Free: {free} - Taken: {taken} - Checked: {count2} - Remaining: {remaining} - Elapsed: {round(t4)} seconds")
 
+def start():
+    clear()
+    os.system("title Steam Vanity Checker - Main Menu")
+    print()
+    printMain()
+    print()
+    print("> discord.gg/kws")
+    print()
+    print(Center.XCenter(Colorate.Horizontal(Colors.red_to_white, " Welcome!", 1)))
+    print()
+    print(Center.XCenter(Colorate.Horizontal(
+        Colors.white_to_blue, " [1] Generator - Only generate vanity's", 1)))
+    print(Center.XCenter(Colorate.Horizontal(
+        Colors.white_to_blue, " [2] Checker - Only check vanity's", 1)))
+    print(Center.XCenter(Colorate.Horizontal(
+        Colors.white_to_blue, " [3] Both - Do both of the tasks", 1)))
+    print(Center.XCenter(Colorate.Horizontal(
+        Colors.white_to_blue, " [4] Exit - Go away", 1)))
+    print(Center.XCenter(Colorate.Horizontal(
+        Colors.white_to_green, "\n Choose a number", 1)))
+    mode = input("\n > ")
+    print(mode)
 
-if mode == "gen":
+    if mode == "1":
+        clear()
+        printLogo()
+        gen()
+        os.system(f"title Steam Vanity Checker - Done! - Generated {count} usernames")
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Generated {count} usernames", 1)))
+        time.sleep(1)
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
+        input()
+    if mode == "2":
+        clear()
+        printLogo2()
+        check()
+        os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked: {count2}")
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Checked: {count2}", 1)))
+        time.sleep(1)
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
+        input()
+    if mode == "3":
+        clear()
+        printLogo()
+        gen()
+        time.sleep(1)
+        clear()
+        printLogo2()
+        start2 = time.time()
+        check()
+        end2 = time.time()
+        elapsed2 = end2 - start2
+        os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds")
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Generated: {count} - Checked: {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds", 1)))
+        time.sleep(1)
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
+        input()
+    if mode == "4":
+            clear()
+            print()
+            print(Center.XCenter(Colorate.Horizontal(
+                Colors.white_to_red, " Goodbye...", 1)))
+            time.sleep(2)
+            exit()
+    if mode != "1" and mode != "2" and mode != "3" and mode != "4":
+            clear()
+            print()
+            print(Center.XCenter(Colorate.Horizontal(
+                Colors.white_to_red, " Invalid Option!", 1)))
+            time.sleep(2)
+try:
+    start()
+except KeyboardInterrupt:
     clear()
-    printLogo()
-    gen()
-    os.system(f"title OG User Gen - Done! - Generated {count} usernames")
-    print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Generated {count} usernames", 1)))
-    time.sleep(1)
-    print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
-    input()
-if mode == "check":
-    clear()
-    printLogo2()
-    check()
-    os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked: {count2}")
-    print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Checked: {count2}", 1)))
-    time.sleep(1)
-    print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
-    input()
-if mode == "og":
-    clear()
-    printLogo()
-    gen()
-    time.sleep(1)
-    clear()
-    printLogo2()
-    start2 = time.time()
-    check()
-    end2 = time.time()
-    elapsed2 = end2 - start2
-    os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds")
-    print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Generated: {count} - Checked: {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds", 1)))
-    time.sleep(1)
-    print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
-    input()
+    print()
+    print(Center.XCenter(Colorate.Horizontal(
+        Colors.white_to_red, " Goodbye...", 1)))
+    time.sleep(2)
+    exit()
