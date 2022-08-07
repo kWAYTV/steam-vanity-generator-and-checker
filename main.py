@@ -106,13 +106,13 @@ def check():
                 steamId64 = json_data["response"]["steamid"]
             if success == 1:
                 count2 += 1
-                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The id: {line} is taken by user {steamId64}. Link: https://steamcommunity.com/id/{line}")
+                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The id {line} is taken by user {steamId64}. Link: https://steamcommunity.com/id/{line}\n")
                 with open('taken.txt', 'a') as takenList:
                     takenList.write(f"{line}\n")
                     taken += 1
             if success == 42:
                 count2 += 1
-                print(f"{Fore.GREEN}[{Fore.RESET}+{Fore.GREEN}] {Fore.RESET}The id: {line} is free.")
+                print(f"{Fore.GREEN}[{Fore.RESET}+{Fore.GREEN}] {Fore.RESET}The id {line} is free.\n")
                 with open('free.txt', 'a') as freeList:
                     freeList.write(f"{line}\n")
                     free += 1
