@@ -195,12 +195,22 @@ def start():
                 Colors.white_to_red, " Goodbye...", 1)))
             time.sleep(2)
             exit()
-    if mode != "1" and mode != "2" and mode != "3" and mode != "4":
+    if mode == "5":
+        print(Center.XCenter(Colorate.Horizontal(
+                Colors.white_to_red, " Wiping data...", 1)))
+        time.sleep(2)
+        filelist = [ f for f in os.listdir(mydir) if f.endswith(".bak") ]
+        for f in filelist:
+            os.remove(os.path.join(mydir, f))
+        start()
+    if mode != "1" and mode != "2" and mode != "3" and mode != "4" and mode != "5":
             clear()
             print()
             print(Center.XCenter(Colorate.Horizontal(
                 Colors.white_to_red, " Invalid Option!", 1)))
             time.sleep(2)
+            start()
+
 try:
     start()
 except KeyboardInterrupt:
