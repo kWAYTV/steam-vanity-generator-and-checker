@@ -76,7 +76,7 @@ from colorama import Fore, Back, Style
 from colorama import init
 global count2, free, taken
 
-apiKey = "862CE33052E5105E35F08B9E22A564CF" # Enter your Steam API Key here
+apiKey = "" # Enter your Steam API Key here
 count2 = 0 # Don't touch this
 free = 0 # Don't touch this
 taken = 0 # Don't touch this
