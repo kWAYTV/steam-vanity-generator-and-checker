@@ -200,8 +200,9 @@ def start():
         print(Center.XCenter(Colorate.Horizontal(
                 Colors.white_to_red, " Wiping data...", 1)))
         time.sleep(2)
-        filelist = [ f for f in os.listdir(mydir) if f.endswith(".txt") ]
-        for f in filelist:
+        mydir = os.getcwd()
+        txt = [ f for f in os.listdir(mydir) if f.endswith(".txt") ]
+        for f in txt:
             os.remove(os.path.join(mydir, f))
         start()
     if mode != "1" and mode != "2" and mode != "3" and mode != "4" and mode != "5":
