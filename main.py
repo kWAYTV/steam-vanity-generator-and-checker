@@ -148,11 +148,12 @@ def start():
     print(Center.XCenter(Colorate.Horizontal(
         Colors.white_to_blue, " [3] Both - Do both of the tasks", 1)))
     print(Center.XCenter(Colorate.Horizontal(
-        Colors.white_to_blue, " [4] Exit - Go away", 1)))
+        Colors.white_to_blue, " [4] Exit - Go away from here", 1)))
+    print(Center.XCenter(Colorate.Horizontal(
+        Colors.white_to_blue, " [5] Wipe Data - Delete your .txt files in the directory", 1)))
     print(Center.XCenter(Colorate.Horizontal(
         Colors.white_to_green, "\n Choose a number", 1)))
     mode = input("\n > ")
-    print(mode)
 
     if mode == "1":
         clear()
@@ -199,7 +200,7 @@ def start():
         print(Center.XCenter(Colorate.Horizontal(
                 Colors.white_to_red, " Wiping data...", 1)))
         time.sleep(2)
-        filelist = [ f for f in os.listdir(mydir) if f.endswith(".bak") ]
+        filelist = [ f for f in os.listdir(mydir) if f.endswith(".txt") ]
         for f in filelist:
             os.remove(os.path.join(mydir, f))
         start()
