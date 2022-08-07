@@ -7,6 +7,7 @@ from colorama import init  #
 import os, time
 import threading
 import sys
+import multiprocessing
 
 global count
 count = 0 # Don't touch this
@@ -75,7 +76,7 @@ from colorama import Fore, Back, Style
 from colorama import init
 global count2, free, taken
 
-apiKey = "" # Enter your Steam API Key here
+apiKey = "862CE33052E5105E35F08B9E22A564CF" # Enter your Steam API Key here
 count2 = 0 # Don't touch this
 free = 0 # Don't touch this
 taken = 0 # Don't touch this
@@ -191,10 +192,10 @@ def start():
                 t = threading.Thread(target=check)
                 t.start()
                 os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked: {count2}")
-                #print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Checked: {count2}", 1)))
-                #time.sleep(1)
-                #print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
-                #input()
+                print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Checked: {count2}", 1)))
+                time.sleep(1)
+                print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
+                input()
     if mode == "3":
         clear()
         printLogo()
@@ -203,7 +204,16 @@ def start():
         clear()
         printLogo2()
         start2 = time.time()
-        #check()
+        try:
+            x = input('\n[?] Amount of threads you would like to use:' )
+        except:
+            print('[!] Error')
+            return
+        for arrayT in x:
+            threads = []
+            for i in arrayT:
+                t = threading.Thread(target=check)
+                t.start()
         end2 = time.time()
         elapsed2 = end2 - start2
         os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds")
