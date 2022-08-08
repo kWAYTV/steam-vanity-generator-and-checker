@@ -128,7 +128,7 @@ def vCheck():
             response = requests.get(f"http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key={apiKey}&vanityurl={line}")
             json_data = response.json()
             json.dumps(json_data, indent=4)
-            print(f"{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}] {Fore.RESET}Checking vanity: {line}")
+            print(f"{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}] {Fore.RESET}Checking user vanity: {line}\n")
             if not "response" in json_data:
                 print(f"{Fore.RED}[{Fore.RESET}X{Fore.RED}] {Fore.RESET}{line} is not a valid Steam ID.")
                 continue
@@ -171,6 +171,7 @@ def gCheck():
                 continue
             global success
             response = requests.get(f"https://steamcommunity.com/actions/AvailabilityCheck?&type=groupLink&value={line}").text
+            print(f"{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}] {Fore.RESET}Checking group vanity: {line}\n")
             if f"The group link, {line}, is already in use by another group" in response:
                 count3 += 1
                 print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The group vanity {line} is taken by: https://steamcommunity.com/groups/{line}\n")
@@ -187,6 +188,11 @@ def gCheck():
             t6 = time.time() - t5
             os.system(f"title Steam Group Vanity Checker - Free: {freeGroups} - Taken: {takenGroups} - Checked: {count3} - Remaining: {remainingGroups} - Elapsed: {round(t6)} seconds")
 
+# Open Website
+import webbrowser
+def openWebsite():
+    webbrowser.open("https://kwayservices.top/")
+
 # Define the main menu
 def start():
     clear()
@@ -194,7 +200,7 @@ def start():
     print()
     printMain()
     print()
-    print(" > discord.gg/kws")
+    print(" > kwayservices.top")
     print()
     print(Center.XCenter(Colorate.Horizontal(Colors.red_to_white, " Welcome!", 1)))
     print()
@@ -211,9 +217,11 @@ def start():
     print(Center.XCenter(Colorate.Horizontal(
         Colors.white_to_blue, " [6] Generate & Check both users and group vanity's.", 1)))
     print(Center.XCenter(Colorate.Horizontal(
-        Colors.white_to_blue, " [7] Wipe Data - Delete your .txt files in the directory", 1)))
+        Colors.white_to_blue, " [7] Wipe Data - Wipe all your txt files.", 1)))
     print(Center.XCenter(Colorate.Horizontal(
-        Colors.white_to_blue, " [8] Exit - Close the tool.", 1)))
+        Colors.white_to_blue, " [8] Open the website (discord there).", 1)))
+    print(Center.XCenter(Colorate.Horizontal(
+        Colors.white_to_blue, " [9] Exit - Close the tool.", 1)))
     print(Center.XCenter(Colorate.Horizontal(
         Colors.white_to_green, "\n Choose a number", 1)))
     mode = input("\n > ")
@@ -316,21 +324,29 @@ def start():
             os.remove(os.path.join(mydir, f))
         print(Center.XCenter(Colorate.Horizontal(
                 Colors.white_to_green, " Done! Going back to main menu...", 1)))
+        time.sleep(0.3)
+        start()
+# Open website
+    if mode == "8":
+        openWebsite()
+        print(Center.XCenter(Colorate.Horizontal(
+                Colors.white_to_green, " Done! Going back to main menu...", 1)))
+        time.sleep(0.3)
         start()
 # Exit the program
-    if mode == "8":
+    if mode == "9":
         clear()
         print()
         print(Center.XCenter(Colorate.Horizontal(
             Colors.white_to_red, " Goodbye...", 1)))
-        time.sleep(2)
+        time.sleep(1)
         exit()
     if mode != "1" and mode != "2" and mode != "3" and mode != "4" and mode != "5" and mode != "6" and mode != "7" and mode != "8" and mode != "9":
             clear()
             print()
             print(Center.XCenter(Colorate.Horizontal(
                 Colors.white_to_red, " Invalid Option!", 1)))
-            time.sleep(2)
+            time.sleep(0.85)
             start()
 
 # Start the program with KeyboardInterrupt exception
