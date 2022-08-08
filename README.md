@@ -5,7 +5,8 @@ Edit the tool and search for `mode` and `apiKey` (get one from [here](https://st
 Modes are: `og = both modes / check = check only mode / gen = generate only mode`<br />
 Tool will output everything in console with a fancy ui and save it on text files.
 # To-do
-Threading when checking and more ways to get + combinations or words from another word to generate more types of vanity's + group vanity checker.
+ - Threading for both of the checkers<br />
+ - More ways to generate vanity's
 # Links
 [Discord](https://discord.gg/kws)<br />
 [Website](https://kwayservices.top)<br />
