@@ -74,13 +74,12 @@ import requests, json, os, time
 from pystyle import Colors, Colorate, Center
 from colorama import Fore, Back, Style
 from colorama import init
-global count2, free, taken, remaining
+global count2, free, taken
 
-apiKey = "862CE33052E5105E35F08B9E22A564CF" # Enter your Steam API Key here
+apiKey = "" # Enter your Steam API Key here
 count2 = 0 # Don't touch this
 free = 0 # Don't touch this
 taken = 0 # Don't touch this
-remaining = 0 # Don't touch this
 
 logo2 = """
 ██╗░░░██╗░█████╗░███╗░░██╗██╗████████╗██╗░░░██╗  ░█████╗░██╗░░██╗███████╗░█████╗░██╗░░██╗██████╗░
@@ -96,24 +95,20 @@ def printLogo2():
 def func(number):
     for i in range(1, 10):
         time.sleep(0.01)
-        print(f'{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}] Processing ' + str(number) + ': prints ' + str(number*i))
-
-global checking
-checking = False
+        print('Processing ' + str(number) + ': prints ' + str(number*i))
 
 def check():
-    print(f'{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}]{Fore.RESET} Threads have activated')
+    print('threads have activated')
     while True:
-        global count2, free, taken, checking, remaining
+        global count2, free, taken
         os.system(f"title Steam Vanity Checker - Ready!")
         with open("gen-output.txt","r") as f:
             content = f.read()
         lines = content.split("\n")
         with open(r"gen-output.txt", 'r') as fp:
                 amount = len(fp.readlines())
-        print(f"{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}]{Fore.RESET} Found {amount} vanity's to check.")
+        print(f"{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}] {Fore.RESET}Found {amount} vanity's to check.")
         t3 = time.time()
-        checking = True
         for line in lines:
             line = line.rstrip('\r\n')
             if line == "":
@@ -147,42 +142,15 @@ def check():
             remaining = amount - count2
             t4 = time.time() - t3
             os.system(f"title Steam Vanity Checker - Free: {free} - Taken: {taken} - Checked: {count2} - Remaining: {remaining} - Elapsed: {round(t4)} seconds")
-            if remaining == 0:
-                checking = False
-            break
-            t.stop()
-
-def tStart():
-    global checking, remaining
-    while checking == True:
-        try:
-            x = input(f'\n{Fore.YELLOW}[{Fore.RESET}?{Fore.YELLOW}]{Fore.RESET} Amount of threads you would like to use: ' )
-        except:
-            print('[!] Error')
-            return
-        for arrayT in x:
-                threads = []
-                for i in arrayT:
-                    t = threading.Thread(target=check)
-                    t.start()
-        if remaining == 0:
-            checking = False
-            break
-            t.stop()
-        os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked: {count2}")
-        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Checked: {count2}", 1)))
-        time.sleep(1)
-        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
-        input()
+            
 
 def start():
-    global checking, remaining
     clear()
     os.system("title Steam Vanity Checker - Main Menu")
     print()
     printMain()
     print()
-    print(" > discord.gg/kws")
+    print("> discord.gg/kws")
     print()
     print(Center.XCenter(Colorate.Horizontal(Colors.red_to_white, " Welcome!", 1)))
     print()
@@ -193,9 +161,9 @@ def start():
     print(Center.XCenter(Colorate.Horizontal(
         Colors.white_to_blue, " [3] Both - Do both of the tasks", 1)))
     print(Center.XCenter(Colorate.Horizontal(
-        Colors.white_to_blue, " [4] Wipe Data - Delete your .txt files in the directory", 1)))
+        Colors.white_to_blue, " [4] Exit - Go away from here", 1)))
     print(Center.XCenter(Colorate.Horizontal(
-        Colors.white_to_blue, " [5] Exit - Go away from here", 1)))
+        Colors.white_to_blue, " [5] Wipe Data - Delete your .txt files in the directory", 1)))
     print(Center.XCenter(Colorate.Horizontal(
         Colors.white_to_green, "\n Choose a number", 1)))
     mode = input("\n > ")
@@ -212,8 +180,22 @@ def start():
     if mode == "2":
         clear()
         printLogo2()
-        checking = True
-        tStart()
+        try:
+            x = input('\n[?] Amount of threads you would like to use:' )
+        except:
+            print('[!] Error')
+            return
+    
+        for arrayT in x:
+            threads = []
+            for i in arrayT:
+                t = threading.Thread(target=check)
+                t.start()
+                os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked: {count2}")
+                print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Checked: {count2}", 1)))
+                time.sleep(1)
+                print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
+                input()
     if mode == "3":
         clear()
         printLogo()
@@ -222,26 +204,39 @@ def start():
         clear()
         printLogo2()
         start2 = time.time()
-        checking = True
-        tStart()
+        try:
+            x = input('\n[?] Amount of threads you would like to use:' )
+        except:
+            print('[!] Error')
+            return
+        for arrayT in x:
+            threads = []
+            for i in arrayT:
+                t = threading.Thread(target=check)
+                t.start()
         end2 = time.time()
         elapsed2 = end2 - start2
+        os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds")
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Generated: {count} - Checked: {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds", 1)))
+        time.sleep(1)
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
+        input()
     if mode == "4":
+            clear()
+            print()
+            print(Center.XCenter(Colorate.Horizontal(
+                Colors.white_to_red, " Goodbye...", 1)))
+            time.sleep(2)
+            exit()
+    if mode == "5":
         print(Center.XCenter(Colorate.Horizontal(
-            Colors.white_to_red, " Wiping data...", 1)))
+                Colors.white_to_red, " Wiping data...", 1)))
         time.sleep(2)
         mydir = os.getcwd()
         txt = [ f for f in os.listdir(mydir) if f.endswith(".txt") ]
         for f in txt:
             os.remove(os.path.join(mydir, f))
         start()
-    if mode == "5":
-        clear()
-        print()
-        print(Center.XCenter(Colorate.Horizontal(
-            Colors.white_to_red, " Goodbye...", 1)))
-        time.sleep(2)
-        exit()
     if mode != "1" and mode != "2" and mode != "3" and mode != "4" and mode != "5":
             clear()
             print()
