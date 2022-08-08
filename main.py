@@ -84,7 +84,7 @@ from xml.etree import ElementTree
 global count2, free, taken
 
 # Steam API Key
-apiKey = "862CE33052E5105E35F08B9E22A564CF" # Enter your Steam API Key here
+apiKey = "" # Enter your Steam API Key here
 
 # User Vanity Settings
 count2 = 0 # Don't touch this
