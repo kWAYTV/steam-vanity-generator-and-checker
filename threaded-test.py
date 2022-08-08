@@ -147,6 +147,10 @@ def check():
             remaining = amount - count2
             t4 = time.time() - t3
             os.system(f"title Steam Vanity Checker - Free: {free} - Taken: {taken} - Checked: {count2} - Remaining: {remaining} - Elapsed: {round(t4)} seconds")
+            if remaining == 0:
+                checking = False
+            break
+            t.stop()
 
 def tStart():
     global checking, remaining
