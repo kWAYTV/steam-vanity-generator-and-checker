@@ -162,8 +162,8 @@ def start():
         os.system(f"title Steam Vanity Checker - Done! - Generated {count} usernames")
         print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Generated {count} usernames", 1)))
         time.sleep(1)
-        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
-        input()
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to go back to the main menu", 1)))
+        start()
     if mode == "2":
         clear()
         printLogo2()
@@ -171,8 +171,8 @@ def start():
         os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked: {count2}")
         print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Checked: {count2}", 1)))
         time.sleep(1)
-        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
-        input()
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to go back to the main menu.", 1)))
+        start()
     if mode == "3":
         clear()
         printLogo()
@@ -187,8 +187,8 @@ def start():
         os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds")
         print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Generated: {count} - Checked: {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds", 1)))
         time.sleep(1)
-        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
-        input()
+        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to go back to the main menu.", 1)))
+        start()
     if mode == "4":
         print(Center.XCenter(Colorate.Horizontal(
                 Colors.white_to_red, " Wiping data...", 1)))
@@ -198,7 +198,7 @@ def start():
         for f in txt:
             os.remove(os.path.join(mydir, f))
         print(Center.XCenter(Colorate.Horizontal(
-                Colors.white_to_green, " Done!", 1)))
+                Colors.white_to_green, " Done! Going back to main menu...", 1)))
         start()    
     if mode == "5":
         clear()
@@ -211,7 +211,7 @@ def start():
             clear()
             print()
             print(Center.XCenter(Colorate.Horizontal(
-                Colors.white_to_red, " Invalid Option!", 1)))
+                Colors.white_to_red, " Invalid Option! Going back to main menu...", 1)))
             time.sleep(2)
             start()
 
