@@ -1,9 +1,13 @@
 from random import choices
 from string import ascii_lowercase
+import sys
 from pystyle import Colors, Colorate, Center
 from colorama import Fore, Back, Style  #
 from colorama import init  #
 import os, time
+import threading
+import sys
+import multiprocessing
 
 global count
 count = 0 # Don't touch this
@@ -35,6 +39,7 @@ def printLogo():
         print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, logo, 1)))
 
 clear()
+
 def gen():
     global count, amount, end
     os.system(f"title Steam Vanity Generator - Ready!")
@@ -87,11 +92,18 @@ logo2 = """
 def printLogo2():
     print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, logo2, 1)))
 
+def func(number):
+    for i in range(1, 10):
+        time.sleep(0.01)
+        print('Processing ' + str(number) + ': prints ' + str(number*i))
+
 def check():
-    global count2, free, taken
-    os.system(f"title Steam Vanity Checker - Ready!")
-    with open("gen-output.txt","r") as f:
-        content = f.read()
+    print('threads have activated')
+    while True:
+        global count2, free, taken
+        os.system(f"title Steam Vanity Checker - Ready!")
+        with open("gen-output.txt","r") as f:
+            content = f.read()
         lines = content.split("\n")
         with open(r"gen-output.txt", 'r') as fp:
                 amount = len(fp.readlines())
@@ -130,6 +142,7 @@ def check():
             remaining = amount - count2
             t4 = time.time() - t3
             os.system(f"title Steam Vanity Checker - Free: {free} - Taken: {taken} - Checked: {count2} - Remaining: {remaining} - Elapsed: {round(t4)} seconds")
+            
 
 def start():
     clear()
@@ -167,12 +180,22 @@ def start():
     if mode == "2":
         clear()
         printLogo2()
-        check()
-        os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked: {count2}")
-        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Checked: {count2}", 1)))
-        time.sleep(1)
-        print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
-        input()
+        try:
+            x = input('\n[?] Amount of threads you would like to use:' )
+        except:
+            print('[!] Error')
+            return
+    
+        for arrayT in x:
+            threads = []
+            for i in arrayT:
+                t = threading.Thread(target=check)
+                t.start()
+                os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked: {count2}")
+                print(Center.XCenter(Colorate.Horizontal(Colors.white_to_green, f"   \nDone! - Free: {free} - Taken: {taken} - Checked: {count2}", 1)))
+                time.sleep(1)
+                print(Center.XCenter(Colorate.Horizontal(Colors.white_to_red, "   \nPress any key to exit", 1)))
+                input()
     if mode == "3":
         clear()
         printLogo()
@@ -181,7 +204,16 @@ def start():
         clear()
         printLogo2()
         start2 = time.time()
-        check()
+        try:
+            x = input('\n[?] Amount of threads you would like to use:' )
+        except:
+            print('[!] Error')
+            return
+        for arrayT in x:
+            threads = []
+            for i in arrayT:
+                t = threading.Thread(target=check)
+                t.start()
         end2 = time.time()
         elapsed2 = end2 - start2
         os.system(f"title Steam Vanity Checker - Done! - Free: {free} - Taken: {taken} - Checked {count2} usernames - " + "Elapsed: {}".format(round(elapsed2)) + " seconds")
