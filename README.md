@@ -1,4 +1,4 @@
-# Steam Vanity Generator & Checker
+# Steam User/Group Vanity Generator & Checker
  Tool to generate and check steam vanity's, with modes depending on what you need.
 # Set up
 Edit the tool and search for `mode` and `apiKey` (get one from [here](https://steamcommunity.com/dev/apikey))<br />
