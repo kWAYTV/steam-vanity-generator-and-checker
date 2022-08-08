@@ -197,6 +197,8 @@ def start():
         txt = [ f for f in os.listdir(mydir) if f.endswith(".txt") ]
         for f in txt:
             os.remove(os.path.join(mydir, f))
+        print(Center.XCenter(Colorate.Horizontal(
+                Colors.white_to_green, " Done!", 1)))
         start()    
     if mode == "5":
         clear()
