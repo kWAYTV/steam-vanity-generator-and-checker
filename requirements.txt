@@ -1,0 +1,8 @@
+requests
+os
+jsonlib
+time
+pystyle
+colorama
+xml
+webbrowser
