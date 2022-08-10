@@ -1,6 +1,15 @@
 # Coded by kWAY#1701 - discord.gg/kws - kwayservices.top
 # Steam Vanity Generator & Checker
 
+import os
+try:
+    import requests, os, json, time, webbrowser, colorama, pystyle, xml
+    print("\nImports successful!")
+    time.sleep(1)
+except:
+    print("\nImports failed! Trying to install...")
+    z = "python -m pip install "; os.system('%srequests' % (z)); os.system('%sos-sys' % (z)); os.system('%sjsonlib' % (z)); os.system('%stime' % (z)); os.system('%swebbrowser' % (z)); os.system('%scolorama' % (z)); os.system('%spystyle' % (z)); os.system('%sxml' % (z))
+    time.sleep(1)
 
 # ------------ IMPORTS -----------
 from random import choices
@@ -8,7 +17,6 @@ from string import ascii_lowercase
 from pystyle import Colors, Colorate, Center
 from colorama import Fore, Back, Style
 from colorama import init
-import os, time
 
 # -----------  CODE  -------------
 # Generator & General Settings
@@ -76,7 +84,6 @@ def gen():
 
 time.sleep(2)
 clear()
-import requests, json, os, time, xml
 from pystyle import Colors, Colorate, Center
 from colorama import Fore, Back, Style
 from colorama import init
