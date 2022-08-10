@@ -158,7 +158,7 @@ def vCheck():
                     free += 1
             remaining = amount - count2
             t4 = time.time() - t3
-            os.system(f"title Steam Vanity Checker - Free: {free} - Taken: {taken} - Checked: {count2} - Remaining: {remaining} - Elapsed: {round(t4)} seconds")
+            os.system(f"title Steam User Vanity Checker - Free: {free} - Taken: {taken} - Checked: {count2} - Remaining: {remaining} - Elapsed: {round(t4)} seconds")
 
 # Steam Group Vanity Checker
 def gCheck():
