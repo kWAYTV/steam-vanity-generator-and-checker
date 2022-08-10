@@ -8,7 +8,7 @@ try:
 except:
     print("\nImports failed! Trying to install...")
     z = "python -m pip install "; os.system('%srequests' % (z)); os.system('%sos-sys' % (z)); os.system('%sjsonlib' % (z)); os.system('%stime' % (z)); os.system('%swebbrowser' % (z)); os.system('%scolorama' % (z)); os.system('%spystyle' % (z)); os.system('%sxml' % (z))
-
+    print("\nImports successful!")
 
 # ------------ IMPORTS -----------
 from random import choices
