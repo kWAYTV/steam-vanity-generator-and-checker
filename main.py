@@ -134,7 +134,6 @@ def vCheck():
             response = requests.get(f"http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key={apiKey}&vanityurl={line}")
             json_data = response.json()
             json.dumps(json_data, indent=4)
-            print(f"{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}] {Fore.RESET}Checking user vanity: {line}\n")
             if not "response" in json_data:
                 print(f"{Fore.RED}[{Fore.RESET}X{Fore.RED}] {Fore.RESET}{line} is not a valid Steam ID.")
                 continue
@@ -146,13 +145,13 @@ def vCheck():
                 steamId64 = json_data["response"]["steamid"]
             if success == 1:
                 count2 += 1
-                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The id {line} is taken by user {steamId64}. Link: https://steamcommunity.com/id/{line}\n")
+                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The id {line} is taken by user {steamId64}. Link: https://steamcommunity.com/id/{line}")
                 with open('taken-user.txt', 'a') as takenList:
                     takenList.write(f"{line}\n")
                     taken += 1
             if success == 42:
                 count2 += 1
-                print(f"{Fore.GREEN}[{Fore.RESET}+{Fore.GREEN}] {Fore.RESET}The id {line} is free.\n")
+                print(f"{Fore.GREEN}[{Fore.RESET}+{Fore.GREEN}] {Fore.RESET}The id {line} is free.")
                 with open('free-user.txt', 'a') as freeList:
                     freeList.write(f"{line}\n")
                     free += 1
@@ -177,16 +176,15 @@ def gCheck():
                 continue
             global success
             response = requests.get(f"https://steamcommunity.com/actions/AvailabilityCheck?&type=groupLink&value={line}").text
-            print(f"{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}] {Fore.RESET}Checking group vanity: {line}\n")
             if f"The group link, {line}, is already in use by another group" in response:
                 count3 += 1
-                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The group vanity {line} is taken by: https://steamcommunity.com/groups/{line}\n")
+                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The group vanity {line} is taken by: https://steamcommunity.com/groups/{line}")
                 with open('taken-groups.txt', 'a') as tgList: 
                     tgList.write(f"{line}\n")
                     freeGroups += 1
             elif f"The group link, {line}, is available!" in response:
                 count3 += 1
-                print(f"{Fore.GREEN}[{Fore.RESET}+{Fore.GREEN}] {Fore.RESET}The group vanity {line} is free.\n")
+                print(f"{Fore.GREEN}[{Fore.RESET}+{Fore.GREEN}] {Fore.RESET}The group vanity {line} is free.")
                 with open('free-groups.txt', 'a') as fgList:
                     fgList.write(f"{line}\n")
                     takenGroups += 1
