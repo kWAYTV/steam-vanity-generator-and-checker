@@ -11,6 +11,7 @@ except:
     print("\nImports successful!")
 
 # ------------ IMPORTS -----------
+import requests, os, json, time, webbrowser, colorama, pystyle, xml
 from random import choices
 from string import ascii_lowercase
 from pystyle import Colors, Colorate, Center
