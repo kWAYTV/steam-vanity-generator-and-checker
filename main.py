@@ -5,11 +5,10 @@ import os
 try:
     import requests, os, json, time, webbrowser, colorama, pystyle, xml
     print("\nImports successful!")
-    time.sleep(1)
 except:
     print("\nImports failed! Trying to install...")
     z = "python -m pip install "; os.system('%srequests' % (z)); os.system('%sos-sys' % (z)); os.system('%sjsonlib' % (z)); os.system('%stime' % (z)); os.system('%swebbrowser' % (z)); os.system('%scolorama' % (z)); os.system('%spystyle' % (z)); os.system('%sxml' % (z))
-    time.sleep(1)
+
 
 # ------------ IMPORTS -----------
 from random import choices
