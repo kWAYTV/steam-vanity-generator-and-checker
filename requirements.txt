@@ -1,5 +1,5 @@
 requests
-os
+os-sys
 jsonlib
 time
 pystyle
