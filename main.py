@@ -145,7 +145,7 @@ def vCheck():
                 steamId64 = json_data["response"]["steamid"]
             if success == 1:
                 count2 += 1
-                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The id {line} is taken by user {steamId64}. Link: https://steamcommunity.com/id/{line}")
+                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The id {line} is taken.")
                 with open('taken-user.txt', 'a') as takenList:
                     takenList.write(f"{line}\n")
                     taken += 1
@@ -178,7 +178,7 @@ def gCheck():
             response = requests.get(f"https://steamcommunity.com/actions/AvailabilityCheck?&type=groupLink&value={line}").text
             if f"The group link, {line}, is already in use by another group" in response:
                 count3 += 1
-                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The group vanity {line} is taken by: https://steamcommunity.com/groups/{line}")
+                print(f"{Fore.RED}[{Fore.RESET}-{Fore.RED}] {Fore.RESET}The group vanity {line} is taken.")
                 with open('taken-groups.txt', 'a') as tgList: 
                     tgList.write(f"{line}\n")
                     freeGroups += 1
