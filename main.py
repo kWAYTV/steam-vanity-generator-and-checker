@@ -169,7 +169,7 @@ def gCheck():
         lines = content.split("\n")
         with open(r"gen-output.txt", 'r') as fp:
                 amount = len(fp.readlines())
-        print(f"{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}] {Fore.RESET}Found {amount} group vanity's to check.\n")
+        print(f"{Fore.MAGENTA}[{Fore.RESET}+{Fore.MAGENTA}] {Fore.RESET}Found {amount} group vanity's to check.")
         t5 = time.time()
         for line in lines:
             line = line.rstrip('\r\n')
